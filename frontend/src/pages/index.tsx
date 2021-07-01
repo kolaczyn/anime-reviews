@@ -9,6 +9,13 @@ const IndexPage = () => {
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam libero,
         molestias facere tempora debitis voluptate quod numquam vitae tempore
         itaque.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam necessitatibus, excepturi accusantium consectetur suscipit nesciunt sunt tempore odio exercitationem esse autem doloribus ad cumque enim velit perferendis ea dolorum numquam.
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam libero,
+        molestias facere tempora debitis voluptate quod numquam vitae tempore
+        itaque.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam necessitatibus, excepturi accusantium consectetur suscipit nesciunt sunt tempore odio exercitationem esse autem doloribus ad cumque enim velit perferendis ea dolorum numquam.
       </p>
     </ContainerSmall>
   );
