@@ -6,7 +6,7 @@ type Props = { className?: string };
 
 const ContainerBig: React.FC<Props> = ({ className, children }) => {
   return (
-    <Container className={classnames('max-w-6xl', className)}>
+    <Container className={classnames(className)}>
       {children}
     </Container>
   );

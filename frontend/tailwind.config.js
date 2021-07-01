@@ -22,6 +22,7 @@ module.exports = {
           900: '#000000',
         },
         'light-gray': '#E5E5E5',
+        'dark-gray': '#515B69',
         white: {
           DEFAULT: '#FFF7EF',
           50: '#FFFFFF',
