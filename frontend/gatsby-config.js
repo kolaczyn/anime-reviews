@@ -8,6 +8,13 @@ module.exports = {
     DEV_SSR: false,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['montserrat 700', 'lato 400'],
+      },
+      display: 'swap',
+    },
     'gatsby-plugin-layout',
     'gatsby-plugin-gatsby-cloud',
     'gatsby-plugin-image',
