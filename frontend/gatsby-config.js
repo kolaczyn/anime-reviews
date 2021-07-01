@@ -4,6 +4,7 @@ module.exports = {
     siteUrl: 'https://anime-reviews.kolaczyn.com',
   },
   plugins: [
+    'gatsby-plugin-layout',
     'gatsby-plugin-gatsby-cloud',
     'gatsby-plugin-image',
     // {

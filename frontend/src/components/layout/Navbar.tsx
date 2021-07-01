@@ -1,7 +1,8 @@
-import React from 'react';
+import classnames from 'classnames';
 import { Link } from 'gatsby';
+import React, { useContext } from 'react';
+import { NavbarContext } from '../../context/NavbarContext';
 import Logo from '../branding/Logo';
-import ContainerBig from './container/ContainerBig';
 
 type Props = {};
 
@@ -17,8 +18,15 @@ const links: { to: string; label: string }[] = [
 ];
 
 const Navbar: React.FC<Props> = ({}) => {
+  const { theme } = useContext(NavbarContext);
   return (
-    <header className="flex w-full justify-between">
+    <header
+      className={classnames(
+        'flex w-full justify-between',
+        'transition duration-500',
+        theme
+      )}
+    >
       <Logo />
 
       <nav>
