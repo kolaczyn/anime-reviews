@@ -3,9 +3,8 @@ module.exports = {
     title: 'Anime Reviews',
     siteUrl: 'https://anime-reviews.kolaczyn.com',
   },
-  // https://stackoverflow.com/questions/66083723/prop-aria-current-did-not-match-server-null-client-page
   flags: {
-    DEV_SSR: false,
+    DEV_SSR: false
   },
   plugins: [
     {

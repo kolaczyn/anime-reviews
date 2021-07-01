@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        body: ['Lato', 'sans-serif'],
+        header: ['Montserrat', 'sans-serif'],
+      },
       colors: {
         ink: {
           DEFAULT: '#0A1D37',
@@ -17,6 +21,7 @@ module.exports = {
           800: '#000000',
           900: '#000000',
         },
+        'light-gray': '#E5E5E5',
         white: {
           DEFAULT: '#FFF7EF',
           50: '#FFFFFF',
