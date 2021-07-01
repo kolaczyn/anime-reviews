@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 type Props = {};
 
 export enum NavbarTheme {
-  Light = 'bg-transparent text-ink',
+  Light = 'bg-transparent text-ink border-b-2 border-light-gray',
   Dark = 'bg-ink text-white',
 }
 

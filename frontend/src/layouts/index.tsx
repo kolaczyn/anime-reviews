@@ -1,6 +1,6 @@
 import React from 'react';
 import NavbarContextWrapper from '../context/NavbarContext';
-import Footer from '../components/layout/Footer';
+import Footer from '../components/footer/Footer';
 import Navbar from '../components/layout/Navbar';
 
 type Props = {};

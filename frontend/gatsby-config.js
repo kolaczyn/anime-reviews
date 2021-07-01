@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['montserrat 700', 'lato 400'],
+        fonts: ['montserrat 700', 'lato 400 700'],
       },
       display: 'swap',
     },
