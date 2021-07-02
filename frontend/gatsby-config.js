@@ -1,12 +1,24 @@
+require('dotenv-safe').config();
+
+const { gatsbyStrapiUrl } = process.env;
+
 module.exports = {
   siteMetadata: {
     title: 'Anime Reviews',
     siteUrl: 'https://anime-reviews.kolaczyn.com',
   },
   flags: {
-    DEV_SSR: false
+    DEV_SSR: false,
   },
   plugins: [
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: gatsbyStrapiUrl,
+        queryLimit: 1000,
+        collectionTypes: ['reviews'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
