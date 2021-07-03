@@ -70,6 +70,13 @@
     },
     "similarReviewOne": {
       "model": "review"
+    },
+    "pageContent": {
+      "type": "dynamiczone",
+      "components": [
+        "review.no-spoiler",
+        "review.spoiler-alert"
+      ]
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_review_spoiler_alerts",
+  "info": {
+    "name": "Spoiler Alert",
+    "icon": "eye"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
