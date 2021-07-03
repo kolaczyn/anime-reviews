@@ -38,6 +38,7 @@ const IndexPage = () => {
     query HomePageArticles {
       allStrapiReviews {
         nodes {
+          slug
           id
           title
           subtitle
