@@ -1,6 +1,6 @@
 type ArticlePreviewData = {
   id: string;
-  imgSrc: string;
+  // imgSrc: string;
   title: string;
   subtitle: string;
   content: string;

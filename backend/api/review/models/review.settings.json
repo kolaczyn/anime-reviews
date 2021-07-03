@@ -77,6 +77,10 @@
         "review.no-spoiler",
         "review.spoiler-alert"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

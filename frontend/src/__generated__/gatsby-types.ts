@@ -307,13 +307,13 @@ type SitePage = Node & {
   readonly internalComponentName: Scalars['String'];
   readonly componentChunkName: Scalars['String'];
   readonly matchPath: Maybe<Scalars['String']>;
+  readonly isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>;
+  readonly pluginCreator: Maybe<SitePlugin>;
+  readonly pluginCreatorId: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
-  readonly isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>;
-  readonly pluginCreator: Maybe<SitePlugin>;
-  readonly pluginCreatorId: Maybe<Scalars['String']>;
 };
 
 type ImageFormat =
@@ -637,6 +637,7 @@ type StrapiReviews = Node & {
   readonly characters: Maybe<Scalars['Int']>;
   readonly awesomeness: Maybe<Scalars['Int']>;
   readonly similarReviewOne: Maybe<StrapiReviewsSimilarReviewOne>;
+  readonly slug: Maybe<Scalars['String']>;
   readonly published_at: Maybe<Scalars['Date']>;
   readonly created_at: Maybe<Scalars['Date']>;
   readonly updated_at: Maybe<Scalars['Date']>;
@@ -679,6 +680,7 @@ type StrapiReviewsSimilarReviewOne = {
   readonly characters: Maybe<Scalars['Int']>;
   readonly awesomeness: Maybe<Scalars['Int']>;
   readonly similarReviewOne: Maybe<Scalars['Int']>;
+  readonly slug: Maybe<Scalars['String']>;
   readonly published_at: Maybe<Scalars['Date']>;
   readonly created_at: Maybe<Scalars['Date']>;
   readonly updated_at: Maybe<Scalars['Date']>;
@@ -1054,6 +1056,95 @@ type StrapiReviewsImageSmallFormatsSmall = {
   readonly url: Maybe<Scalars['String']>;
 };
 
+type StrapiDonatePage = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly title: Maybe<Scalars['String']>;
+  readonly content: Maybe<Scalars['String']>;
+  readonly moneroAddress: Maybe<Scalars['String']>;
+  readonly published_at: Maybe<Scalars['Date']>;
+  readonly created_at: Maybe<Scalars['Date']>;
+  readonly updated_at: Maybe<Scalars['Date']>;
+  readonly moneroQr: Maybe<StrapiDonatePageMoneroQr>;
+  readonly strapiId: Maybe<Scalars['Int']>;
+};
+
+
+type StrapiDonatePage_published_atArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type StrapiDonatePage_created_atArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type StrapiDonatePage_updated_atArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type StrapiDonatePageMoneroQr = {
+  readonly id: Maybe<Scalars['Int']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly alternativeText: Maybe<Scalars['String']>;
+  readonly caption: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly formats: Maybe<StrapiDonatePageMoneroQrFormats>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly ext: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly provider: Maybe<Scalars['String']>;
+  readonly created_at: Maybe<Scalars['Date']>;
+  readonly updated_at: Maybe<Scalars['Date']>;
+  readonly localFile: Maybe<File>;
+};
+
+
+type StrapiDonatePageMoneroQr_created_atArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type StrapiDonatePageMoneroQr_updated_atArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type StrapiDonatePageMoneroQrFormats = {
+  readonly thumbnail: Maybe<StrapiDonatePageMoneroQrFormatsThumbnail>;
+};
+
+type StrapiDonatePageMoneroQrFormatsThumbnail = {
+  readonly name: Maybe<Scalars['String']>;
+  readonly hash: Maybe<Scalars['String']>;
+  readonly ext: Maybe<Scalars['String']>;
+  readonly mime: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly size: Maybe<Scalars['Float']>;
+  readonly url: Maybe<Scalars['String']>;
+};
+
 type SitePlugin = Node & {
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
@@ -1073,6 +1164,7 @@ type SitePlugin = Node & {
 type SitePluginPluginOptions = {
   readonly queryLimit: Maybe<Scalars['Int']>;
   readonly collectionTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly singleTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly fonts: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly output: Maybe<Scalars['String']>;
   readonly createLinkInHead: Maybe<Scalars['Boolean']>;
@@ -1161,6 +1253,8 @@ type Query = {
   readonly allMdx: MdxConnection;
   readonly strapiReviews: Maybe<StrapiReviews>;
   readonly allStrapiReviews: StrapiReviewsConnection;
+  readonly strapiDonatePage: Maybe<StrapiDonatePage>;
+  readonly allStrapiDonatePage: StrapiDonatePageConnection;
   readonly sitePlugin: Maybe<SitePlugin>;
   readonly allSitePlugin: SitePluginConnection;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
@@ -1322,13 +1416,13 @@ type Query_sitePageArgs = {
   internalComponentName: Maybe<StringQueryOperatorInput>;
   componentChunkName: Maybe<StringQueryOperatorInput>;
   matchPath: Maybe<StringQueryOperatorInput>;
+  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
+  pluginCreator: Maybe<SitePluginFilterInput>;
+  pluginCreatorId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator: Maybe<SitePluginFilterInput>;
-  pluginCreatorId: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -1402,6 +1496,7 @@ type Query_strapiReviewsArgs = {
   characters: Maybe<IntQueryOperatorInput>;
   awesomeness: Maybe<IntQueryOperatorInput>;
   similarReviewOne: Maybe<StrapiReviewsSimilarReviewOneFilterInput>;
+  slug: Maybe<StringQueryOperatorInput>;
   published_at: Maybe<DateQueryOperatorInput>;
   created_at: Maybe<DateQueryOperatorInput>;
   updated_at: Maybe<DateQueryOperatorInput>;
@@ -1414,6 +1509,30 @@ type Query_strapiReviewsArgs = {
 type Query_allStrapiReviewsArgs = {
   filter: Maybe<StrapiReviewsFilterInput>;
   sort: Maybe<StrapiReviewsSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type Query_strapiDonatePageArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  title: Maybe<StringQueryOperatorInput>;
+  content: Maybe<StringQueryOperatorInput>;
+  moneroAddress: Maybe<StringQueryOperatorInput>;
+  published_at: Maybe<DateQueryOperatorInput>;
+  created_at: Maybe<DateQueryOperatorInput>;
+  updated_at: Maybe<DateQueryOperatorInput>;
+  moneroQr: Maybe<StrapiDonatePageMoneroQrFilterInput>;
+  strapiId: Maybe<IntQueryOperatorInput>;
+};
+
+
+type Query_allStrapiDonatePageArgs = {
+  filter: Maybe<StrapiDonatePageFilterInput>;
+  sort: Maybe<StrapiDonatePageSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -2567,6 +2686,7 @@ type SitePluginFilterInput = {
 type SitePluginPluginOptionsFilterInput = {
   readonly queryLimit: Maybe<IntQueryOperatorInput>;
   readonly collectionTypes: Maybe<StringQueryOperatorInput>;
+  readonly singleTypes: Maybe<StringQueryOperatorInput>;
   readonly fonts: Maybe<StringQueryOperatorInput>;
   readonly output: Maybe<StringQueryOperatorInput>;
   readonly createLinkInHead: Maybe<BooleanQueryOperatorInput>;
@@ -2685,6 +2805,97 @@ type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
+  | 'isCreatedByStatefulCreatePages'
+  | 'pluginCreator.id'
+  | 'pluginCreator.parent.id'
+  | 'pluginCreator.parent.parent.id'
+  | 'pluginCreator.parent.parent.children'
+  | 'pluginCreator.parent.children'
+  | 'pluginCreator.parent.children.id'
+  | 'pluginCreator.parent.children.children'
+  | 'pluginCreator.parent.internal.content'
+  | 'pluginCreator.parent.internal.contentDigest'
+  | 'pluginCreator.parent.internal.description'
+  | 'pluginCreator.parent.internal.fieldOwners'
+  | 'pluginCreator.parent.internal.ignoreType'
+  | 'pluginCreator.parent.internal.mediaType'
+  | 'pluginCreator.parent.internal.owner'
+  | 'pluginCreator.parent.internal.type'
+  | 'pluginCreator.children'
+  | 'pluginCreator.children.id'
+  | 'pluginCreator.children.parent.id'
+  | 'pluginCreator.children.parent.children'
+  | 'pluginCreator.children.children'
+  | 'pluginCreator.children.children.id'
+  | 'pluginCreator.children.children.children'
+  | 'pluginCreator.children.internal.content'
+  | 'pluginCreator.children.internal.contentDigest'
+  | 'pluginCreator.children.internal.description'
+  | 'pluginCreator.children.internal.fieldOwners'
+  | 'pluginCreator.children.internal.ignoreType'
+  | 'pluginCreator.children.internal.mediaType'
+  | 'pluginCreator.children.internal.owner'
+  | 'pluginCreator.children.internal.type'
+  | 'pluginCreator.internal.content'
+  | 'pluginCreator.internal.contentDigest'
+  | 'pluginCreator.internal.description'
+  | 'pluginCreator.internal.fieldOwners'
+  | 'pluginCreator.internal.ignoreType'
+  | 'pluginCreator.internal.mediaType'
+  | 'pluginCreator.internal.owner'
+  | 'pluginCreator.internal.type'
+  | 'pluginCreator.resolve'
+  | 'pluginCreator.name'
+  | 'pluginCreator.version'
+  | 'pluginCreator.pluginOptions.queryLimit'
+  | 'pluginCreator.pluginOptions.collectionTypes'
+  | 'pluginCreator.pluginOptions.singleTypes'
+  | 'pluginCreator.pluginOptions.fonts'
+  | 'pluginCreator.pluginOptions.output'
+  | 'pluginCreator.pluginOptions.createLinkInHead'
+  | 'pluginCreator.pluginOptions.entryLimit'
+  | 'pluginCreator.pluginOptions.query'
+  | 'pluginCreator.pluginOptions.icon'
+  | 'pluginCreator.pluginOptions.legacy'
+  | 'pluginCreator.pluginOptions.theme_color_in_head'
+  | 'pluginCreator.pluginOptions.cache_busting_mode'
+  | 'pluginCreator.pluginOptions.crossOrigin'
+  | 'pluginCreator.pluginOptions.include_favicon'
+  | 'pluginCreator.pluginOptions.cacheDigest'
+  | 'pluginCreator.pluginOptions.extensions'
+  | 'pluginCreator.pluginOptions.lessBabel'
+  | 'pluginCreator.pluginOptions.mediaTypes'
+  | 'pluginCreator.pluginOptions.root'
+  | 'pluginCreator.pluginOptions.base64Width'
+  | 'pluginCreator.pluginOptions.stripMetadata'
+  | 'pluginCreator.pluginOptions.defaultQuality'
+  | 'pluginCreator.pluginOptions.failOnError'
+  | 'pluginCreator.pluginOptions.name'
+  | 'pluginCreator.pluginOptions.path'
+  | 'pluginCreator.pluginOptions.pathCheck'
+  | 'pluginCreator.pluginOptions.allExtensions'
+  | 'pluginCreator.pluginOptions.isTSX'
+  | 'pluginCreator.pluginOptions.jsxPragma'
+  | 'pluginCreator.nodeAPIs'
+  | 'pluginCreator.browserAPIs'
+  | 'pluginCreator.ssrAPIs'
+  | 'pluginCreator.pluginFilepath'
+  | 'pluginCreator.packageJson.name'
+  | 'pluginCreator.packageJson.description'
+  | 'pluginCreator.packageJson.version'
+  | 'pluginCreator.packageJson.main'
+  | 'pluginCreator.packageJson.license'
+  | 'pluginCreator.packageJson.dependencies'
+  | 'pluginCreator.packageJson.dependencies.name'
+  | 'pluginCreator.packageJson.dependencies.version'
+  | 'pluginCreator.packageJson.devDependencies'
+  | 'pluginCreator.packageJson.devDependencies.name'
+  | 'pluginCreator.packageJson.devDependencies.version'
+  | 'pluginCreator.packageJson.peerDependencies'
+  | 'pluginCreator.packageJson.peerDependencies.name'
+  | 'pluginCreator.packageJson.peerDependencies.version'
+  | 'pluginCreator.packageJson.keywords'
+  | 'pluginCreatorId'
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -2770,97 +2981,7 @@ type SitePageFieldsEnum =
   | 'internal.ignoreType'
   | 'internal.mediaType'
   | 'internal.owner'
-  | 'internal.type'
-  | 'isCreatedByStatefulCreatePages'
-  | 'pluginCreator.id'
-  | 'pluginCreator.parent.id'
-  | 'pluginCreator.parent.parent.id'
-  | 'pluginCreator.parent.parent.children'
-  | 'pluginCreator.parent.children'
-  | 'pluginCreator.parent.children.id'
-  | 'pluginCreator.parent.children.children'
-  | 'pluginCreator.parent.internal.content'
-  | 'pluginCreator.parent.internal.contentDigest'
-  | 'pluginCreator.parent.internal.description'
-  | 'pluginCreator.parent.internal.fieldOwners'
-  | 'pluginCreator.parent.internal.ignoreType'
-  | 'pluginCreator.parent.internal.mediaType'
-  | 'pluginCreator.parent.internal.owner'
-  | 'pluginCreator.parent.internal.type'
-  | 'pluginCreator.children'
-  | 'pluginCreator.children.id'
-  | 'pluginCreator.children.parent.id'
-  | 'pluginCreator.children.parent.children'
-  | 'pluginCreator.children.children'
-  | 'pluginCreator.children.children.id'
-  | 'pluginCreator.children.children.children'
-  | 'pluginCreator.children.internal.content'
-  | 'pluginCreator.children.internal.contentDigest'
-  | 'pluginCreator.children.internal.description'
-  | 'pluginCreator.children.internal.fieldOwners'
-  | 'pluginCreator.children.internal.ignoreType'
-  | 'pluginCreator.children.internal.mediaType'
-  | 'pluginCreator.children.internal.owner'
-  | 'pluginCreator.children.internal.type'
-  | 'pluginCreator.internal.content'
-  | 'pluginCreator.internal.contentDigest'
-  | 'pluginCreator.internal.description'
-  | 'pluginCreator.internal.fieldOwners'
-  | 'pluginCreator.internal.ignoreType'
-  | 'pluginCreator.internal.mediaType'
-  | 'pluginCreator.internal.owner'
-  | 'pluginCreator.internal.type'
-  | 'pluginCreator.resolve'
-  | 'pluginCreator.name'
-  | 'pluginCreator.version'
-  | 'pluginCreator.pluginOptions.queryLimit'
-  | 'pluginCreator.pluginOptions.collectionTypes'
-  | 'pluginCreator.pluginOptions.fonts'
-  | 'pluginCreator.pluginOptions.output'
-  | 'pluginCreator.pluginOptions.createLinkInHead'
-  | 'pluginCreator.pluginOptions.entryLimit'
-  | 'pluginCreator.pluginOptions.query'
-  | 'pluginCreator.pluginOptions.icon'
-  | 'pluginCreator.pluginOptions.legacy'
-  | 'pluginCreator.pluginOptions.theme_color_in_head'
-  | 'pluginCreator.pluginOptions.cache_busting_mode'
-  | 'pluginCreator.pluginOptions.crossOrigin'
-  | 'pluginCreator.pluginOptions.include_favicon'
-  | 'pluginCreator.pluginOptions.cacheDigest'
-  | 'pluginCreator.pluginOptions.extensions'
-  | 'pluginCreator.pluginOptions.lessBabel'
-  | 'pluginCreator.pluginOptions.mediaTypes'
-  | 'pluginCreator.pluginOptions.root'
-  | 'pluginCreator.pluginOptions.base64Width'
-  | 'pluginCreator.pluginOptions.stripMetadata'
-  | 'pluginCreator.pluginOptions.defaultQuality'
-  | 'pluginCreator.pluginOptions.failOnError'
-  | 'pluginCreator.pluginOptions.name'
-  | 'pluginCreator.pluginOptions.path'
-  | 'pluginCreator.pluginOptions.pathCheck'
-  | 'pluginCreator.pluginOptions.allExtensions'
-  | 'pluginCreator.pluginOptions.isTSX'
-  | 'pluginCreator.pluginOptions.jsxPragma'
-  | 'pluginCreator.nodeAPIs'
-  | 'pluginCreator.browserAPIs'
-  | 'pluginCreator.ssrAPIs'
-  | 'pluginCreator.pluginFilepath'
-  | 'pluginCreator.packageJson.name'
-  | 'pluginCreator.packageJson.description'
-  | 'pluginCreator.packageJson.version'
-  | 'pluginCreator.packageJson.main'
-  | 'pluginCreator.packageJson.license'
-  | 'pluginCreator.packageJson.dependencies'
-  | 'pluginCreator.packageJson.dependencies.name'
-  | 'pluginCreator.packageJson.dependencies.version'
-  | 'pluginCreator.packageJson.devDependencies'
-  | 'pluginCreator.packageJson.devDependencies.name'
-  | 'pluginCreator.packageJson.devDependencies.version'
-  | 'pluginCreator.packageJson.peerDependencies'
-  | 'pluginCreator.packageJson.peerDependencies.name'
-  | 'pluginCreator.packageJson.peerDependencies.version'
-  | 'pluginCreator.packageJson.keywords'
-  | 'pluginCreatorId';
+  | 'internal.type';
 
 type SitePageGroupConnection = {
   readonly totalCount: Scalars['Int'];
@@ -2877,13 +2998,13 @@ type SitePageFilterInput = {
   readonly internalComponentName: Maybe<StringQueryOperatorInput>;
   readonly componentChunkName: Maybe<StringQueryOperatorInput>;
   readonly matchPath: Maybe<StringQueryOperatorInput>;
+  readonly isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
+  readonly pluginCreator: Maybe<SitePluginFilterInput>;
+  readonly pluginCreatorId: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
-  readonly isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
-  readonly pluginCreator: Maybe<SitePluginFilterInput>;
-  readonly pluginCreatorId: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePageSortInput = {
@@ -3281,6 +3402,7 @@ type StrapiReviewsSimilarReviewOneFilterInput = {
   readonly characters: Maybe<IntQueryOperatorInput>;
   readonly awesomeness: Maybe<IntQueryOperatorInput>;
   readonly similarReviewOne: Maybe<IntQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
   readonly published_at: Maybe<DateQueryOperatorInput>;
   readonly created_at: Maybe<DateQueryOperatorInput>;
   readonly updated_at: Maybe<DateQueryOperatorInput>;
@@ -3716,6 +3838,7 @@ type StrapiReviewsFieldsEnum =
   | 'similarReviewOne.characters'
   | 'similarReviewOne.awesomeness'
   | 'similarReviewOne.similarReviewOne'
+  | 'similarReviewOne.slug'
   | 'similarReviewOne.published_at'
   | 'similarReviewOne.created_at'
   | 'similarReviewOne.updated_at'
@@ -3823,6 +3946,7 @@ type StrapiReviewsFieldsEnum =
   | 'similarReviewOne.imageSmall.localFile.childrenImageSharp'
   | 'similarReviewOne.imageSmall.localFile.id'
   | 'similarReviewOne.imageSmall.localFile.children'
+  | 'slug'
   | 'published_at'
   | 'created_at'
   | 'updated_at'
@@ -4054,6 +4178,7 @@ type StrapiReviewsFilterInput = {
   readonly characters: Maybe<IntQueryOperatorInput>;
   readonly awesomeness: Maybe<IntQueryOperatorInput>;
   readonly similarReviewOne: Maybe<StrapiReviewsSimilarReviewOneFilterInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
   readonly published_at: Maybe<DateQueryOperatorInput>;
   readonly created_at: Maybe<DateQueryOperatorInput>;
   readonly updated_at: Maybe<DateQueryOperatorInput>;
@@ -4064,6 +4189,287 @@ type StrapiReviewsFilterInput = {
 
 type StrapiReviewsSortInput = {
   readonly fields: Maybe<ReadonlyArray<Maybe<StrapiReviewsFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+type StrapiDonatePageMoneroQrFilterInput = {
+  readonly id: Maybe<IntQueryOperatorInput>;
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly alternativeText: Maybe<StringQueryOperatorInput>;
+  readonly caption: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly formats: Maybe<StrapiDonatePageMoneroQrFormatsFilterInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly provider: Maybe<StringQueryOperatorInput>;
+  readonly created_at: Maybe<DateQueryOperatorInput>;
+  readonly updated_at: Maybe<DateQueryOperatorInput>;
+  readonly localFile: Maybe<FileFilterInput>;
+};
+
+type StrapiDonatePageMoneroQrFormatsFilterInput = {
+  readonly thumbnail: Maybe<StrapiDonatePageMoneroQrFormatsThumbnailFilterInput>;
+};
+
+type StrapiDonatePageMoneroQrFormatsThumbnailFilterInput = {
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly hash: Maybe<StringQueryOperatorInput>;
+  readonly ext: Maybe<StringQueryOperatorInput>;
+  readonly mime: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly size: Maybe<FloatQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+};
+
+type StrapiDonatePageConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<StrapiDonatePageEdge>;
+  readonly nodes: ReadonlyArray<StrapiDonatePage>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<StrapiDonatePageGroupConnection>;
+};
+
+
+type StrapiDonatePageConnection_distinctArgs = {
+  field: StrapiDonatePageFieldsEnum;
+};
+
+
+type StrapiDonatePageConnection_maxArgs = {
+  field: StrapiDonatePageFieldsEnum;
+};
+
+
+type StrapiDonatePageConnection_minArgs = {
+  field: StrapiDonatePageFieldsEnum;
+};
+
+
+type StrapiDonatePageConnection_sumArgs = {
+  field: StrapiDonatePageFieldsEnum;
+};
+
+
+type StrapiDonatePageConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: StrapiDonatePageFieldsEnum;
+};
+
+type StrapiDonatePageEdge = {
+  readonly next: Maybe<StrapiDonatePage>;
+  readonly node: StrapiDonatePage;
+  readonly previous: Maybe<StrapiDonatePage>;
+};
+
+type StrapiDonatePageFieldsEnum =
+  | 'id'
+  | 'parent.id'
+  | 'parent.parent.id'
+  | 'parent.parent.parent.id'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.children.children'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.children'
+  | 'parent.children.id'
+  | 'parent.children.parent.id'
+  | 'parent.children.parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.children.children'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'children'
+  | 'children.id'
+  | 'children.parent.id'
+  | 'children.parent.parent.id'
+  | 'children.parent.parent.children'
+  | 'children.parent.children'
+  | 'children.parent.children.id'
+  | 'children.parent.children.children'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.children'
+  | 'children.children.id'
+  | 'children.children.parent.id'
+  | 'children.children.parent.children'
+  | 'children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.children.children'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'title'
+  | 'content'
+  | 'moneroAddress'
+  | 'published_at'
+  | 'created_at'
+  | 'updated_at'
+  | 'moneroQr.id'
+  | 'moneroQr.name'
+  | 'moneroQr.alternativeText'
+  | 'moneroQr.caption'
+  | 'moneroQr.width'
+  | 'moneroQr.height'
+  | 'moneroQr.formats.thumbnail.name'
+  | 'moneroQr.formats.thumbnail.hash'
+  | 'moneroQr.formats.thumbnail.ext'
+  | 'moneroQr.formats.thumbnail.mime'
+  | 'moneroQr.formats.thumbnail.width'
+  | 'moneroQr.formats.thumbnail.height'
+  | 'moneroQr.formats.thumbnail.size'
+  | 'moneroQr.formats.thumbnail.url'
+  | 'moneroQr.hash'
+  | 'moneroQr.ext'
+  | 'moneroQr.mime'
+  | 'moneroQr.size'
+  | 'moneroQr.url'
+  | 'moneroQr.provider'
+  | 'moneroQr.created_at'
+  | 'moneroQr.updated_at'
+  | 'moneroQr.localFile.sourceInstanceName'
+  | 'moneroQr.localFile.absolutePath'
+  | 'moneroQr.localFile.relativePath'
+  | 'moneroQr.localFile.extension'
+  | 'moneroQr.localFile.size'
+  | 'moneroQr.localFile.prettySize'
+  | 'moneroQr.localFile.modifiedTime'
+  | 'moneroQr.localFile.accessTime'
+  | 'moneroQr.localFile.changeTime'
+  | 'moneroQr.localFile.birthTime'
+  | 'moneroQr.localFile.root'
+  | 'moneroQr.localFile.dir'
+  | 'moneroQr.localFile.base'
+  | 'moneroQr.localFile.ext'
+  | 'moneroQr.localFile.name'
+  | 'moneroQr.localFile.relativeDirectory'
+  | 'moneroQr.localFile.dev'
+  | 'moneroQr.localFile.mode'
+  | 'moneroQr.localFile.nlink'
+  | 'moneroQr.localFile.uid'
+  | 'moneroQr.localFile.gid'
+  | 'moneroQr.localFile.rdev'
+  | 'moneroQr.localFile.ino'
+  | 'moneroQr.localFile.atimeMs'
+  | 'moneroQr.localFile.mtimeMs'
+  | 'moneroQr.localFile.ctimeMs'
+  | 'moneroQr.localFile.atime'
+  | 'moneroQr.localFile.mtime'
+  | 'moneroQr.localFile.ctime'
+  | 'moneroQr.localFile.birthtime'
+  | 'moneroQr.localFile.birthtimeMs'
+  | 'moneroQr.localFile.blksize'
+  | 'moneroQr.localFile.blocks'
+  | 'moneroQr.localFile.url'
+  | 'moneroQr.localFile.publicURL'
+  | 'moneroQr.localFile.childrenImageSharp'
+  | 'moneroQr.localFile.childrenImageSharp.gatsbyImageData'
+  | 'moneroQr.localFile.childrenImageSharp.id'
+  | 'moneroQr.localFile.childrenImageSharp.children'
+  | 'moneroQr.localFile.childImageSharp.gatsbyImageData'
+  | 'moneroQr.localFile.childImageSharp.id'
+  | 'moneroQr.localFile.childImageSharp.children'
+  | 'moneroQr.localFile.id'
+  | 'moneroQr.localFile.parent.id'
+  | 'moneroQr.localFile.parent.children'
+  | 'moneroQr.localFile.children'
+  | 'moneroQr.localFile.children.id'
+  | 'moneroQr.localFile.children.children'
+  | 'moneroQr.localFile.internal.content'
+  | 'moneroQr.localFile.internal.contentDigest'
+  | 'moneroQr.localFile.internal.description'
+  | 'moneroQr.localFile.internal.fieldOwners'
+  | 'moneroQr.localFile.internal.ignoreType'
+  | 'moneroQr.localFile.internal.mediaType'
+  | 'moneroQr.localFile.internal.owner'
+  | 'moneroQr.localFile.internal.type'
+  | 'strapiId';
+
+type StrapiDonatePageGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<StrapiDonatePageEdge>;
+  readonly nodes: ReadonlyArray<StrapiDonatePage>;
+  readonly pageInfo: PageInfo;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+type StrapiDonatePageFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly content: Maybe<StringQueryOperatorInput>;
+  readonly moneroAddress: Maybe<StringQueryOperatorInput>;
+  readonly published_at: Maybe<DateQueryOperatorInput>;
+  readonly created_at: Maybe<DateQueryOperatorInput>;
+  readonly updated_at: Maybe<DateQueryOperatorInput>;
+  readonly moneroQr: Maybe<StrapiDonatePageMoneroQrFilterInput>;
+  readonly strapiId: Maybe<IntQueryOperatorInput>;
+};
+
+type StrapiDonatePageSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<StrapiDonatePageFieldsEnum>>>;
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
@@ -4204,6 +4610,7 @@ type SitePluginFieldsEnum =
   | 'version'
   | 'pluginOptions.queryLimit'
   | 'pluginOptions.collectionTypes'
+  | 'pluginOptions.singleTypes'
   | 'pluginOptions.fonts'
   | 'pluginOptions.output'
   | 'pluginOptions.createLinkInHead'
@@ -4424,14 +4831,6 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type HomePageArticlesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type HomePageArticlesQuery = { readonly allStrapiReviews: { readonly nodes: ReadonlyArray<(
-      Pick<StrapiReviews, 'id' | 'title' | 'subtitle' | 'content' | 'created_at'>
-      & { readonly imageSmall: Maybe<Pick<StrapiReviewsImageSmall, 'url'>> }
-    )> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
