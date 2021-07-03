@@ -1,0 +1,14 @@
+query HomePageArticles {
+  allStrapiReviews {
+    nodes {
+      id
+      title
+      subtitle
+      content
+      created_at
+      imageSmall {
+        url
+      }
+    }
+  }
+}

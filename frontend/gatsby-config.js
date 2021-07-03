@@ -12,6 +12,9 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-typegen'
+    },
+    {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: gatsbyStrapiUrl,
