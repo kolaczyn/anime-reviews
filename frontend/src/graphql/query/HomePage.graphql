@@ -1,4 +1,4 @@
-query HomePageReviewsQuery {
+query HomePageQuery {
   allStrapiReviews {
     nodes {
       slug
@@ -10,6 +10,14 @@ query HomePageReviewsQuery {
       imageSmall {
         url
       }
+    }
+  }
+  allStrapiArticles {
+    nodes {
+      title
+      subtitle
+      published_at
+      slug
     }
   }
 }

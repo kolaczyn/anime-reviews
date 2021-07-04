@@ -4,39 +4,39 @@ import ContainerMedium from '../components/layout/container/ContainerMedium';
 import ReviewPreview from '../components/preview/ReviewPreview';
 import ArticlePreview from '../components/preview/ArticlePreview';
 import { graphql, useStaticQuery } from 'gatsby';
-import { HomePageArticlesQuery } from '../graphql/query/__generated__/HomePageArticlesQuery';
-import { HomePageReviewsQuery } from '../graphql/query/__generated__/HomePageReviewsQuery';
+// import { HomePageArticlesQuery } from '../graphql/query/__generated__/HomePageArticlesQuery';
+import { HomePageQuery } from '../graphql/query/__generated__/HomePageQuery';
 
 const IndexPage = () => {
-  const articles = useStaticQuery<HomePageArticlesQuery>(graphql`
-    query ArticlesQuery {
-      allStrapiArticles {
-        nodes {
-          title
-          subtitle
-          published_at
-          slug
+  const { allStrapiArticles, allStrapiReviews } =
+    useStaticQuery<HomePageQuery>(graphql`
+      query HomePageQuery {
+        allStrapiReviews {
+          nodes {
+            slug
+            id
+            title
+            subtitle
+            content
+            created_at
+            imageSmall {
+              url
+            }
+          }
+        }
+        allStrapiArticles {
+          nodes {
+            title
+            subtitle
+            published_at
+            slug
+          }
         }
       }
-    }
-  `).allStrapiArticles.nodes;
-  // const reviews = useStaticQuery<HomePageReviewsQuery>(graphql`
-  //   query HomePageArticles {
-  //     allStrapiReviews {
-  //       nodes {
-  //         slug
-  //         id
-  //         title
-  //         subtitle
-  //         content
-  //         created_at
-  //         imageSmall {
-  //           url
-  //         }
-  //       }
-  //     }
-  //   }
-  // `).allStrapiReviews.nodes;
+    `);
+  const articles = allStrapiArticles.nodes;
+  const reviews = allStrapiReviews.nodes;
+
   return (
     <ContainerMedium
       className={classNames(
@@ -50,12 +50,12 @@ const IndexPage = () => {
           <ArticlePreview key={data.slug} {...data} />
         ))}
       </div>
-      {/* <div className="lg:col-span-2">
+      <div className="lg:col-span-2">
         <h2 className="mb-6">Latest Reviews</h2>
         {reviews.map(data => (
           <ReviewPreview key={data.id} {...data} />
         ))}
-      </div> */}
+      </div>
     </ContainerMedium>
   );
 };
