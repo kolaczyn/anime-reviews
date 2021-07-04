@@ -1,20 +1,22 @@
 import classNames from 'classnames';
 import React from 'react';
+import percentageToColor from '../../utils/percentageToColor';
+import Subtitle from '../ui/Subtitle';
 
 type Props = {
   percentage: number;
   label: string;
 };
 
-const ProgressBar: React.FC<Props> = ({ percentage, label }) => {
+const RatingBar: React.FC<Props> = ({ percentage, label }) => {
   // the percentage is below 30, the bar is red, if it's below 60 it's yellow
   // otherwise it's green
-  const color = percentage < 30 ? 'red' : percentage < 60 ? 'yellow' : 'green';
+  const color = percentageToColor(percentage)
   return (
     <div className="flex flex-col space-y-2">
-      <div className="flex justify-between text-dark-gray">
-        <span>{label}</span>
-        <span>{percentage}%</span>
+      <div className="flex justify-between">
+        <Subtitle>{label}</Subtitle>
+        <Subtitle>{percentage}%</Subtitle>
       </div>
       <div className="rounded-full h-8 shadow-md overflow-hidden bg-white-600">
         <div
@@ -25,4 +27,4 @@ const ProgressBar: React.FC<Props> = ({ percentage, label }) => {
     </div>
   );
 };
-export default ProgressBar;
+export default RatingBar;

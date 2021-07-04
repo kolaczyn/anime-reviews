@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   reviews.forEach(node => {
     createPage({
       path: `review/${node.slug}`,
-      component: path.resolve('./src/components/article/Article.tsx'),
+      component: path.resolve('./src/components/review/ReviewPage.tsx'),
       context: node,
     });
   });
