@@ -29,7 +29,7 @@
       "path": "/reviews",
       "handler": "review.create",
       "config": {
-        "policies": []
+        "policies": ["global::alwaysFail"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/reviews/:id",
       "handler": "review.update",
       "config": {
-        "policies": []
+        "policies": ["global::alwaysFail"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/reviews/:id",
       "handler": "review.delete",
       "config": {
-        "policies": []
+        "policies": ["global::alwaysFail"]
       }
     }
   ]

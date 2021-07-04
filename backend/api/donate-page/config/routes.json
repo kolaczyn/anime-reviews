@@ -13,7 +13,7 @@
       "path": "/donate-page",
       "handler": "donate-page.update",
       "config": {
-        "policies": []
+        "policies": ["global::alwaysFail"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/donate-page",
       "handler": "donate-page.delete",
       "config": {
-        "policies": []
+        "policies": ["global::alwaysFail"]
       }
     }
   ]
