@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import ReactMarkdown from 'react-markdown';
 import { NavbarContext } from '../context/NavbarContext';
-import '../__generated__/gatsby-types';
+import { DonatePageQuery } from '../graphql/query/__generated__/DonatePageQuery';
 
 export default function DonatePage() {
   const { setThemeDark, setThemeLight } = useContext(NavbarContext);
@@ -11,7 +11,7 @@ export default function DonatePage() {
     setThemeDark();
     return setThemeLight;
   }, []);
-  const donatePageData = useStaticQuery<GatsbyTypes.DonatePageQuery>(graphql`
+  const donatePageData = useStaticQuery<DonatePageQuery>(graphql`
     query DonatePage {
       strapiDonatePage {
         title
@@ -27,7 +27,6 @@ export default function DonatePage() {
       }
     }
   `).strapiDonatePage;
-  console.log(donatePageData);
   return (
     <>
       <Helmet>

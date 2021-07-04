@@ -4,11 +4,11 @@ import React from 'react';
 // import imgSrcArticle from '../images/nagatoro-big.jpg';
 // import imgSrcReview from '../images/nagatoro-small.jpg';
 // import ArticlePreview from '../components/preview/ArticlePreview';
-import  '../__generated__/gatsby-types'
 import classNames from 'classnames';
 import ContainerMedium from '../components/layout/container/ContainerMedium';
 import ReviewPreview from '../components/preview/ReviewPreview';
 import { graphql, useStaticQuery } from 'gatsby';
+import { HomePageArticlesQuery } from '../graphql/query/__generated__/HomePageArticlesQuery';
 
 // const articlesData: ArticlePreviewData[] = [
 //   {
@@ -34,7 +34,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 // ];
 
 const IndexPage = () => {
-  const reviewsData = useStaticQuery<GatsbyTypes.HomePageArticlesQuery>(graphql`
+  const reviewsData = useStaticQuery<HomePageArticlesQuery>(graphql`
     query HomePageArticles {
       allStrapiReviews {
         nodes {

@@ -1,0 +1,14 @@
+query DonatePageQuery {
+  strapiDonatePage {
+    title
+    content
+    moneroAddress
+    moneroQr {
+      formats {
+        thumbnail {
+          url
+        }
+      }
+    }
+  }
+}
