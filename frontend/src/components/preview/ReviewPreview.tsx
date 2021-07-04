@@ -3,7 +3,18 @@ import dateAndTime from 'date-and-time';
 import ArticlePreviewData from '../../models/ArticlePreview';
 import { Link } from 'gatsby';
 
-type Props = ArticlePreviewData;
+type Props = {
+  id: string;
+  // imgSrc: string;
+  title: string;
+  subtitle: string;
+  slug: string;
+  content: string;
+  created_at: string;
+  imageSmall: {
+    url: string;
+  };
+};
 
 const ReviewPreview: React.FC<Props> = ({
   imageSmall: { url },

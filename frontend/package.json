@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "gen:graphql-types": "apollo client:codegen --target typescript --endpoint=http://localhost:8000/___graphql --includes 'src/graphql/**'"
+    "codegen": "apollo client:codegen --target typescript --endpoint=http://localhost:8000/___graphql --includes 'src/graphql/**'"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",

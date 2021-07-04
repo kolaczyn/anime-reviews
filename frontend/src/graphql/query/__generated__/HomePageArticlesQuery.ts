@@ -7,27 +7,19 @@
 // GraphQL query operation: HomePageArticlesQuery
 // ====================================================
 
-export interface HomePageArticlesQuery_allStrapiReviews_nodes_imageSmall {
-  __typename: "StrapiReviewsImageSmall";
-  url: string | null;
-}
-
-export interface HomePageArticlesQuery_allStrapiReviews_nodes {
-  __typename: "StrapiReviews";
-  slug: string | null;
-  id: string;
+export interface HomePageArticlesQuery_allStrapiArticles_nodes {
+  __typename: "StrapiArticles";
   title: string | null;
   subtitle: string | null;
-  content: string | null;
-  created_at: any | null;
-  imageSmall: HomePageArticlesQuery_allStrapiReviews_nodes_imageSmall | null;
+  published_at: any | null;
+  slug: string | null;
 }
 
-export interface HomePageArticlesQuery_allStrapiReviews {
-  __typename: "StrapiReviewsConnection";
-  nodes: HomePageArticlesQuery_allStrapiReviews_nodes[];
+export interface HomePageArticlesQuery_allStrapiArticles {
+  __typename: "StrapiArticlesConnection";
+  nodes: HomePageArticlesQuery_allStrapiArticles_nodes[];
 }
 
 export interface HomePageArticlesQuery {
-  allStrapiReviews: HomePageArticlesQuery_allStrapiReviews;
+  allStrapiArticles: HomePageArticlesQuery_allStrapiArticles;
 }

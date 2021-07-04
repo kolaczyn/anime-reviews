@@ -16,7 +16,7 @@ module.exports = {
       options: {
         apiURL: gatsbyStrapiUrl,
         queryLimit: 1000,
-        collectionTypes: ['reviews'],
+        collectionTypes: ['reviews', 'articles'],
         singleTypes: ['donate-page'],
       },
     },

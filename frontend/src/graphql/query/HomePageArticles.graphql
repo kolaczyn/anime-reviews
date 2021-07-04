@@ -1,15 +1,10 @@
 query HomePageArticlesQuery {
-  allStrapiReviews {
+  allStrapiArticles {
     nodes {
-      slug
-      id
       title
       subtitle
-      content
-      created_at
-      imageSmall {
-        url
-      }
+      published_at
+      slug
     }
   }
 }
