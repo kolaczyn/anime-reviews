@@ -1191,6 +1191,7 @@ type SitePlugin = Node & {
 };
 
 type SitePluginPluginOptions = {
+  readonly apiURL: Maybe<Scalars['String']>;
   readonly queryLimit: Maybe<Scalars['Int']>;
   readonly collectionTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly singleTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -2735,6 +2736,7 @@ type SitePluginFilterInput = {
 };
 
 type SitePluginPluginOptionsFilterInput = {
+  readonly apiURL: Maybe<StringQueryOperatorInput>;
   readonly queryLimit: Maybe<IntQueryOperatorInput>;
   readonly collectionTypes: Maybe<StringQueryOperatorInput>;
   readonly singleTypes: Maybe<StringQueryOperatorInput>;
@@ -2990,6 +2992,7 @@ type SitePageFieldsEnum =
   | 'pluginCreator.resolve'
   | 'pluginCreator.name'
   | 'pluginCreator.version'
+  | 'pluginCreator.pluginOptions.apiURL'
   | 'pluginCreator.pluginOptions.queryLimit'
   | 'pluginCreator.pluginOptions.collectionTypes'
   | 'pluginCreator.pluginOptions.singleTypes'
@@ -4659,6 +4662,7 @@ type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions.apiURL'
   | 'pluginOptions.queryLimit'
   | 'pluginOptions.collectionTypes'
   | 'pluginOptions.singleTypes'
@@ -4875,6 +4879,22 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
+type DonatePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type DonatePageQuery = { readonly strapiDonatePage: Maybe<(
+    Pick<StrapiDonatePage, 'title' | 'content' | 'moneroAddress'>
+    & { readonly moneroQr: Maybe<{ readonly formats: Maybe<{ readonly thumbnail: Maybe<Pick<StrapiDonatePageMoneroQrFormatsThumbnail, 'url'>> }> }> }
+  )> };
+
+type HomePageArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type HomePageArticlesQuery = { readonly allStrapiReviews: { readonly nodes: ReadonlyArray<(
+      Pick<StrapiReviews, 'slug' | 'id' | 'title' | 'subtitle' | 'content' | 'created_at'>
+      & { readonly imageSmall: Maybe<Pick<StrapiReviewsImageSmall, 'url'>> }
+    )> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

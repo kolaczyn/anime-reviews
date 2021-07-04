@@ -1,6 +1,6 @@
 require('dotenv-safe').config();
 
-const { gatsbyStrapiUrl } = process.env;
+const { GATSBY_STRAPI_URL: gatsbyStrapiUrl } = process.env;
 
 module.exports = {
   siteMetadata: {
