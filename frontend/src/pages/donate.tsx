@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import ReactMarkdown from 'react-markdown';
 import { NavbarContext } from '../context/NavbarContext';
 import '../__generated__/gatsby-types';
 
@@ -35,7 +36,7 @@ export default function DonatePage() {
       <div>
         <h1>{donatePageData.title}</h1>
         <div>
-          {donatePageData.content}
+          <ReactMarkdown>{donatePageData.content}</ReactMarkdown>
         </div>
         <span>{donatePageData.moneroAddress}</span>
       </div>

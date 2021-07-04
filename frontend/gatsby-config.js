@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-typegen'
+      resolve: 'gatsby-plugin-typegen',
     },
     {
       resolve: 'gatsby-source-strapi',
@@ -20,7 +20,7 @@ module.exports = {
         apiURL: gatsbyStrapiUrl,
         queryLimit: 1000,
         collectionTypes: ['reviews'],
-        singleTypes: ['donate-page']
+        singleTypes: ['donate-page'],
       },
     },
     {
