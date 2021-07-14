@@ -81,6 +81,12 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "snippet": {
+      "type": "richtext",
+      "minLength": 40,
+      "maxLength": 200,
+      "required": true
     }
   }
 }

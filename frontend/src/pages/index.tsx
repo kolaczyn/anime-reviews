@@ -16,8 +16,7 @@ const IndexPage = () => {
             slug
             id
             title
-            subtitle
-            content
+            snippet
             created_at
             imageSmall {
               url
@@ -52,9 +51,11 @@ const IndexPage = () => {
       </div>
       <div className="lg:col-span-2">
         <h2 className="mb-6">Latest Reviews</h2>
+        <div className="space-y-1">
         {reviews.map(data => (
           <ReviewPreview key={data.id} {...data} />
         ))}
+        </div>
       </div>
     </ContainerMedium>
   );
