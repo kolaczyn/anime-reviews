@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import dateAndTime from 'date-and-time';
 import ArticlePreviewData from '../../models/ArticlePreview';
-import { Link } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 import backgroundImage from '../../utils/backgroundImage';
 
 type Props = {
@@ -26,7 +26,7 @@ const ReviewPreview: React.FC<Props> = ({
   const asDate = new Date(date);
   const prettyDate = dateAndTime.format(asDate, 'D MMM YYYY');
   return (
-    <Link className="inline-block" to={`/review/${slug}`}>
+    <GatsbyLink className="inline-block" to={`/review/${slug}`}>
       <div className="grid grid-cols-3 rounded-lg overflow-hidden shadow-sm hover:shadow-md border-light-gray border-2">
         <div
           className="bg-center bg-no-repeat bg-cover"
@@ -42,7 +42,7 @@ const ReviewPreview: React.FC<Props> = ({
           </div>
         </div>
       </div>
-    </Link>
+    </GatsbyLink>
   );
 };
 export default ReviewPreview;

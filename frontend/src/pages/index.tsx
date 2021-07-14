@@ -3,19 +3,22 @@ import classNames from 'classnames';
 import ContainerMedium from '../components/layout/container/ContainerMedium';
 import ReviewPreview from '../components/preview/ReviewPreview';
 import ArticlePreview from '../components/preview/ArticlePreview';
-import { graphql, useStaticQuery } from 'gatsby';
+import { Link as GatsbyLink, graphql, useStaticQuery } from 'gatsby';
 // import { HomePageArticlesQuery } from '../graphql/query/__generated__/HomePageArticlesQuery';
 import { HomePageQuery } from '../graphql/query/__generated__/HomePageQuery';
+import Link from '../components/ui/Link';
 
 const IndexPage = () => {
   const { allStrapiArticles, allStrapiReviews } =
     useStaticQuery<HomePageQuery>(graphql`
       query HomePageQuery {
-        allStrapiReviews {
+        allStrapiReviews(limit: 5) {
           nodes {
             slug
             id
             title
+            subtitle
+            content
             snippet
             created_at
             imageSmall {
@@ -23,12 +26,16 @@ const IndexPage = () => {
             }
           }
         }
-        allStrapiArticles {
+        allStrapiArticles(limit: 3) {
           nodes {
             title
-            subtitle
             published_at
+            id
             slug
+            snippet
+            imageSmall {
+              url
+            }
           }
         }
       }
@@ -41,25 +48,33 @@ const IndexPage = () => {
       className={classNames(
         'grid grid-cols-1 lg:grid-cols-3',
         'space-y-4 lg:space-y-0 lg:space-x-4',
-        'pt-8'
+        'py-8'
       )}
     >
-      
-        <div className="w-full md:w-2/3 lg:w-full lg:col-span-1">
-          <h1 className="mb-6">Latest articles</h1>
-          {articles.map(data => (
-            <ArticlePreview key={data.slug} {...data} />
+      <div className="w-full md:w-2/3 lg:w-full lg:col-span-1">
+        <div className="mb-4">
+          <h2>Latest Articles</h2>
+          <GatsbyLink to="/article">
+            <Link>See all articles</Link>
+          </GatsbyLink>
+        </div>
+        {articles.map(data => (
+          <ArticlePreview key={data.slug} {...data} />
+        ))}
+      </div>
+      <div className="lg:col-span-2">
+        <div className="mb-4">
+          <h2>Latest Reviews</h2>
+          <GatsbyLink to="/review">
+            <Link>See all reviews</Link>
+          </GatsbyLink>
+        </div>
+        <div className="space-y-1">
+          {reviews.map(data => (
+            <ReviewPreview key={data.id} {...data} />
           ))}
         </div>
-        <div className="lg:col-span-2">
-          <h2 className="mb-6">Latest Reviews</h2>
-          <div className="space-y-1">
-            {reviews.map(data => (
-              <ReviewPreview key={data.id} {...data} />
-            ))}
-          </div>
-        </div>
-      
+      </div>
     </ContainerMedium>
   );
 };

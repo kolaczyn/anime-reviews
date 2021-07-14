@@ -45,7 +45,7 @@ export default function DonatePage() {
         <title>{donatePageData.title}</title>
       </Helmet>
       <ContainerMedium>
-        <div className="pt-8">
+        <div className="py-8">
           <h1>{donatePageData.title}</h1>
           <div>
             <ReactMarkdown>{donatePageData.content}</ReactMarkdown>

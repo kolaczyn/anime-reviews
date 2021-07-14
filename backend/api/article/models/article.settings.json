@@ -25,7 +25,7 @@
       "type": "uid",
       "targetField": "title"
     },
-    "image": {
+    "background": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -34,6 +34,22 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "imageSmall": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "snippet": {
+      "type": "richtext",
+      "minLength": 40,
+      "maxLength": 200,
+      "required": true
     }
   }
 }

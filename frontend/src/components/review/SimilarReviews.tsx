@@ -11,16 +11,19 @@ type Props = {
     created_at: string;
     imageSmall: {
       url: string;
-    }
+    };
   };
 };
 
 const SimilarReviews: React.FC<Props> = ({ similarReviewOne }) => {
   return (
     <div>
-      {[similarReviewOne].map(review => (
-        <ReviewPreview key={review.id} {...review} />
-      ))}
+      <h2>Similar Reviews</h2>
+      <div>
+        {[similarReviewOne].map(review => (
+          <ReviewPreview key={review.id} {...review} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,23 +1,28 @@
 query HomePageQuery {
-  allStrapiReviews {
+  allStrapiReviews(limit: 5) {
     nodes {
       slug
       id
       title
       subtitle
       content
+      snippet
       created_at
       imageSmall {
         url
       }
     }
   }
-  allStrapiArticles {
+  allStrapiArticles(limit: 3) {
     nodes {
       title
-      subtitle
       published_at
+      id
       slug
+      snippet
+      imageSmall {
+        url
+      }
     }
   }
 }

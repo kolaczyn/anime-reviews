@@ -66,7 +66,11 @@ const ReviewPage: React.FC<Props> = ({
       </Helmet>
       <div
         className="bg-fixed bg-cover bg-center py-20"
-        style={{ ...backgroundImage(background.url), paddingTop: '65vh' }}
+        style={{
+          ...backgroundImage(background.url),
+          paddingTop: '60vh',
+          paddingBottom: '25vh',
+        }}
       >
         <GlassPage>
           <div className="space-y-6">

@@ -19,6 +19,7 @@ export interface HomePageQuery_allStrapiReviews_nodes {
   title: string | null;
   subtitle: string | null;
   content: string | null;
+  snippet: string | null;
   created_at: any | null;
   imageSmall: HomePageQuery_allStrapiReviews_nodes_imageSmall | null;
 }
@@ -28,12 +29,19 @@ export interface HomePageQuery_allStrapiReviews {
   nodes: HomePageQuery_allStrapiReviews_nodes[];
 }
 
+export interface HomePageQuery_allStrapiArticles_nodes_imageSmall {
+  __typename: "StrapiArticlesImageSmall";
+  url: string | null;
+}
+
 export interface HomePageQuery_allStrapiArticles_nodes {
   __typename: "StrapiArticles";
   title: string | null;
-  subtitle: string | null;
   published_at: any | null;
+  id: string;
   slug: string | null;
+  snippet: string | null;
+  imageSmall: HomePageQuery_allStrapiArticles_nodes_imageSmall | null;
 }
 
 export interface HomePageQuery_allStrapiArticles {

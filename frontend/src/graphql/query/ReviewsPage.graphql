@@ -1,0 +1,16 @@
+query ReviewsPageQuery {
+  allStrapiReviews {
+    nodes {
+      slug
+      id
+      title
+      snippet
+      subtitle
+      content
+      created_at
+      imageSmall {
+        url
+      }
+    }
+  }
+}
