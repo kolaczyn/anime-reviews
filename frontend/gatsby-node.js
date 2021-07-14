@@ -23,8 +23,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             url
           }
           similarReviewOne {
+            id
             slug
             title
+            snippet
+            created_at
             imageSmall {
               url
             }

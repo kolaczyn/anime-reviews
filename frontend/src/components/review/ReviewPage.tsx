@@ -28,8 +28,13 @@ type Props = {
     awesomeness: number;
     similarReviewOne: {
       slug: string;
+      id: string;
       title: string;
-      imageSmall: string;
+      snippet: string;
+      created_at: string;
+      imageSmall: {
+        url: string;
+      };
     };
   };
 };
@@ -64,15 +69,19 @@ const ReviewPage: React.FC<Props> = ({
         style={{ ...backgroundImage(background.url), paddingTop: '65vh' }}
       >
         <GlassPage>
-          <Review
-            title={title}
-            subtitle={subtitle}
-            published_at={published_at}
-            content={content}
-            overallRating={overallRating}
-          />
-          <AnimeRatings ratings={{ story, opening, characters, awesomeness }} />
-          <SimilarReviews similarReviewOne={similarReviewOne} />
+          <div className="space-y-6">
+            <Review
+              title={title}
+              subtitle={subtitle}
+              published_at={published_at}
+              content={content}
+              overallRating={overallRating}
+            />
+            <AnimeRatings
+              ratings={{ story, opening, characters, awesomeness }}
+            />
+            <SimilarReviews similarReviewOne={similarReviewOne} />
+          </div>
         </GlassPage>
       </div>
     </>

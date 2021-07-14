@@ -7,9 +7,7 @@ import backgroundImage from '../../utils/backgroundImage';
 
 type Props = {
   id: string;
-  // imgSrc: string;
   title: string;
-  subtitle: string;
   snippet: string;
   slug: string;
   created_at: string;
@@ -19,11 +17,11 @@ type Props = {
 };
 
 const ReviewPreview: React.FC<Props> = ({
-  imageSmall: { url },
   title,
   snippet,
   slug,
   created_at: date,
+  imageSmall: { url },
 }) => {
   const asDate = new Date(date);
   const prettyDate = dateAndTime.format(asDate, 'D MMM YYYY');
