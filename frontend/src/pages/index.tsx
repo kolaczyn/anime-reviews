@@ -40,7 +40,7 @@ const IndexPage = () => {
     <ContainerMedium
       className={classNames(
         'grid grid-cols-1 lg:grid-cols-3',
-        'space-y-4 lg:space-y-0 lg:space-x-4'
+        'space-y-4 lg:space-y-0 lg:space-x-4',
       )}
     >
       <div className="w-full md:w-2/3 lg:w-full lg:col-span-1">

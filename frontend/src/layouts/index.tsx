@@ -16,8 +16,10 @@ const GeneralLayout: React.FC<Props> = ({ children }) => {
       <NavbarContextWrapper>
         <SidebarContextWrapper>
           <div className="min-h-screen flex bg-white text-ink flex-col">
-            <Navbar />
-            <main className="flex-1 py-6">{children}</main>
+            <div className="sticky left-0 top-0 right-0 z-10">
+              <Navbar />
+            </div>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
         </SidebarContextWrapper>
