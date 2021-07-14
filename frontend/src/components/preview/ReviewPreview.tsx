@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import dateAndTime from 'date-and-time';
 import ArticlePreviewData from '../../models/ArticlePreview';
 import { Link } from 'gatsby';
+import backgroundImage from '../../utils/backgroundImage';
 
 type Props = {
   id: string;
@@ -31,9 +32,7 @@ const ReviewPreview: React.FC<Props> = ({
       <div className="grid grid-cols-3 rounded-lg overflow-hidden shadow-sm hover:shadow-md border-light-gray border-2">
         <div
           className="bg-center bg-no-repeat bg-cover"
-          style={{
-            backgroundImage: `url("${process.env.GATSBY_STRAPI_URL}${url}")`,
-          }}
+          style={backgroundImage(url)}
         />
         <div className="p-2 col-span-2 overflow-ellipsis">
           <header>

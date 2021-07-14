@@ -9,6 +9,9 @@ import Subtitle from '../ui/Subtitle';
 import RatingBar from './RatingBar';
 import AnimeRatings from './AnimeRatings';
 import SimilarReviews from './SimilarReviews';
+import strapiUrl from '../../utils/strapiUrl';
+import backgroundImage from '../../utils/backgroundImage';
+import GlassPage from '../ui/GlassPage';
 
 type Props = {
   pageContext: {
@@ -17,6 +20,9 @@ type Props = {
     published_at: string;
     content: string;
     story: number;
+    background: {
+      url: string;
+    };
     opening: number;
     characters: number;
     awesomeness: number;
@@ -33,6 +39,7 @@ const ReviewPage: React.FC<Props> = ({
     title,
     subtitle,
     published_at,
+    background,
     content,
     similarReviewOne,
     story,
@@ -52,17 +59,22 @@ const ReviewPage: React.FC<Props> = ({
       <Helmet>
         <title>{title} | Anime Reviews</title>
       </Helmet>
-      <ContainerSmall>
-        <Review
-          title={title}
-          subtitle={subtitle}
-          published_at={published_at}
-          content={content}
-          overallRating={overallRating}
-        />
-        <AnimeRatings ratings={{ story, opening, characters, awesomeness }} />
-        <SimilarReviews similarReviewOne={similarReviewOne} />
-      </ContainerSmall>
+      <div
+        className="bg-fixed bg-cover bg-center py-20"
+        style={{ ...backgroundImage(background.url), paddingTop: '65vh' }}
+      >
+        <GlassPage>
+          <Review
+            title={title}
+            subtitle={subtitle}
+            published_at={published_at}
+            content={content}
+            overallRating={overallRating}
+          />
+          <AnimeRatings ratings={{ story, opening, characters, awesomeness }} />
+          <SimilarReviews similarReviewOne={similarReviewOne} />
+        </GlassPage>
+      </div>
     </>
   );
 };
