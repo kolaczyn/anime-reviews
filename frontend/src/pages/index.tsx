@@ -41,22 +41,25 @@ const IndexPage = () => {
       className={classNames(
         'grid grid-cols-1 lg:grid-cols-3',
         'space-y-4 lg:space-y-0 lg:space-x-4',
+        'pt-8'
       )}
     >
-      <div className="w-full md:w-2/3 lg:w-full lg:col-span-1">
-        <h1 className="mb-6">Latest articles</h1>
-        {articles.map(data => (
-          <ArticlePreview key={data.slug} {...data} />
-        ))}
-      </div>
-      <div className="lg:col-span-2">
-        <h2 className="mb-6">Latest Reviews</h2>
-        <div className="space-y-1">
-        {reviews.map(data => (
-          <ReviewPreview key={data.id} {...data} />
-        ))}
+      
+        <div className="w-full md:w-2/3 lg:w-full lg:col-span-1">
+          <h1 className="mb-6">Latest articles</h1>
+          {articles.map(data => (
+            <ArticlePreview key={data.slug} {...data} />
+          ))}
         </div>
-      </div>
+        <div className="lg:col-span-2">
+          <h2 className="mb-6">Latest Reviews</h2>
+          <div className="space-y-1">
+            {reviews.map(data => (
+              <ReviewPreview key={data.id} {...data} />
+            ))}
+          </div>
+        </div>
+      
     </ContainerMedium>
   );
 };

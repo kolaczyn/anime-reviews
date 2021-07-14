@@ -43,9 +43,9 @@ const ButtonStyle: React.FC<Props> = ({
     <span
     style={wiggle}
       className={classNames(
-        'border-4',
+        'border-4 inline-block',
         outline ? outlineClasses[type] : solidClasses[type],
-        'cursor-pointer px-4 py-2 rounded-xl inline-block font-bold text-white',
+        'cursor-pointer px-4 py-2 rounded-xl font-bold text-white',
         'transition duration-200 ease-in-out',
         'hover:scale-105 wiggle transform',
         className

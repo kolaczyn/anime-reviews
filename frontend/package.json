@@ -21,6 +21,7 @@
     "@types/node": "^16.3.2",
     "@types/react-helmet": "^6.1.1",
     "classnames": "^2.3.1",
+    "copy-to-clipboard": "^3.3.1",
     "date-and-time": "^1.0.1",
     "dotenv-safe": "^8.2.0",
     "gatsby": "^3.6.2",
