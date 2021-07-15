@@ -4,12 +4,20 @@ import React from 'react';
 type Props = { className: string };
 const links: { to: string; label: string }[] = [
   {
-    to: '/donate',
-    label: 'donate',
+    to: '/',
+    label: 'Home',
   },
   {
-    to: '/about',
-    label: 'about',
+    to: '/article',
+    label: 'Articles',
+  },
+  {
+    to: '/review',
+    label: 'Reviews',
+  },
+  {
+    to: '/donate',
+    label: 'Donate',
   },
 ];
 
@@ -18,7 +26,7 @@ const NavbarLinks: React.FC<Props> = ({ ...props }) => {
     <ul {...props}>
       {links.map(({ to, label }) => (
         <li key={label}>
-          <Link to={to}>{label}</Link>
+          <Link activeClassName="underline" to={to}>{label}</Link>
         </li>
       ))}
     </ul>

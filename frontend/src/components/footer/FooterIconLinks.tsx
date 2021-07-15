@@ -15,16 +15,25 @@ type Props = {};
 export type IconLinkInfo = {
   Component: IconType;
   href: string;
+  label: string;
 };
 
 const iconLinkInfo: IconLinkInfo[] = [
-  { Component: TwitterIcon, href: 'https://twitter.com/kolaczyn' },
-  { Component: GithubIcon, href: 'https://github.com/kolaczyn' },
-  { Component: LinkedInIcon, href: 'https://linkedin.com/kolaczyn' },
+  {
+    Component: TwitterIcon,
+    href: 'https://twitter.com/kolaczyn',
+    label: 'Twitter',
+  },
+  { Component: GithubIcon, href: 'https://github.com/kolaczyn', label: 'GitHub' },
+  {
+    Component: LinkedInIcon,
+    href: 'https://linkedin.com/kolaczyn',
+    label: 'LinkedIn',
+  },
   // {component: 'MAL', href="https://myanimelist.com/kolaczyn"},
 ];
 
-const ICON_SIZE = 24
+const ICON_SIZE = 24;
 
 const FooterIconLinks: React.FC<Props> = ({}) => {
   return (
@@ -40,10 +49,10 @@ const FooterIconLinks: React.FC<Props> = ({}) => {
       <section>
         <span>You can find me here</span>
         <ul className="space-x-2 flex">
-          {iconLinkInfo.map(({ Component, href }) => (
+          {iconLinkInfo.map(({ Component, href, label }) => (
             <li key={href}>
               <ExternalLink href={href}>
-                <Component size={ICON_SIZE} />
+                <Component aria-label={label} size={ICON_SIZE} />
               </ExternalLink>
             </li>
           ))}

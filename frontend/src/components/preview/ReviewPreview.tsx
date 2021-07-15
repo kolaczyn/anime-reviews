@@ -34,7 +34,7 @@ const ReviewPreview: React.FC<Props> = ({
         />
         <div className="p-2 col-span-2 overflow-ellipsis">
           <header>
-            <h4>{title}</h4>
+            <h3>{title}</h3>
             <span className="text-dark-gray text-sm">{prettyDate}</span>
           </header>
           <div className="leading-snug overflow-ellipsis">

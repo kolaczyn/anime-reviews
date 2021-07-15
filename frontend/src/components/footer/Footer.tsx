@@ -9,9 +9,9 @@ type Props = {};
 
 const sitemapLinks: LinkInfo[] = [
   { label: 'Home Page', href: '/' },
+  { label: 'Latest Articles', href: '/article' },
+  { label: 'Latest Reviews', href: '/review' },
   { label: 'Donate', href: '/donate' },
-  { label: 'About', href: '/about' },
-  { label: 'Latest', href: '/' },
 ];
 
 const projectsLinks: LinkInfo[] = [

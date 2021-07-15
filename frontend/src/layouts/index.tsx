@@ -10,8 +10,10 @@ type Props = {};
 const GeneralLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Anime Reviews</title>
+        <meta charSet="utf-8" />
+        <meta name="description" content="Here you'll find anime reviews and weeb blog posts." />
       </Helmet>
       <NavbarContextWrapper>
         <SidebarContextWrapper>

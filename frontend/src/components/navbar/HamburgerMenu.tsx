@@ -11,6 +11,7 @@ const HamburgerMenu: React.FC<Props> = ({ className }) => {
   const handleClick = () => setIsSidebarOn(old => !old);
   return (
     <button
+    aria-label={isSidebarOn ? "Close Navbar" : "Open Navbar"}
       onClick={handleClick}
       className={classNames(
         'rounded-full p-3 bg-blue-100 text-ink shadow-md',

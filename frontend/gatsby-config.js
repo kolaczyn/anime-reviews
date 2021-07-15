@@ -6,6 +6,7 @@ module.exports = {
   siteMetadata: {
     title: 'Anime Reviews',
     siteUrl: 'https://anime-reviews.kolaczyn.com',
+    lang: 'en',
   },
   flags: {
     DEV_SSR: false,
@@ -21,15 +22,20 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts-v2',
       options: {
-        fonts: ['montserrat 700', 'lato 400 700'],
+        fonts: [
+          { family: 'Montserrat', weights: ['700'] },
+          { family: 'Lato', weights: ['400', '700'] },
+        ],
       },
       display: 'swap',
     },
     'gatsby-plugin-layout',
     'gatsby-plugin-gatsby-cloud',
     'gatsby-plugin-image',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-robots-txt',
     // {
     //   resolve: "gatsby-plugin-google-analytics",
     //   options: {
