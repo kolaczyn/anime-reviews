@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 1337:1337
+    depends_on:
+      - db
+    env_file:
+      - .env
+  db:
+    image: postgres:13.3-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi-password
+      POSTGRES_DB: strapi
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
