@@ -73,7 +73,7 @@ const ReviewPage: React.FC<Props> = ({
         }}
       >
         <GlassPage>
-          <div className="space-y-6">
+          <div className="space-y-8">
             <Review
               title={title}
               subtitle={subtitle}

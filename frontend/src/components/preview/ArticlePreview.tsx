@@ -30,14 +30,18 @@ const ArticlePreview: React.FC<Props> = ({
   const asDate = new Date(date);
   const prettyDate = dateAndTime.format(asDate, 'D MMM YYYY');
   return (
-    <GatsbyLink className="inline-block" to={`/review/${slug}`}>
+    <GatsbyLink className="inline-block group" to={`/review/${slug}`}>
       <section>
         <div
-          className="bg-center bg-no-repeat bg-cover w-full rounded-md overflow-hidden"
-          style={{ ...backgroundImage(imageSmall.url), minHeight: '20rem' }}
+          className="bg-center bg-no-repeat bg-cover w-full rounded-md overflow-hidden mb-2"
+          style={{
+            ...backgroundImage(imageSmall.url),
+            // minHeight: '20rem',
+            aspectRatio: '2 / 1',
+          }}
         />
         <header>
-          <h3>{title}</h3>
+          <h3 className="leading-tight group-hover:underline">{title}</h3>
           <span className="text-dark-gray text-sm">{prettyDate}</span>
         </header>
         <div className="leading-snug overflow-ellipsis">

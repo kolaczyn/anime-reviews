@@ -47,7 +47,7 @@ const IndexPage = () => {
     <ContainerMedium
       className={classNames(
         'grid grid-cols-1 lg:grid-cols-3',
-        'space-y-4 lg:space-y-0 lg:space-x-4',
+        'space-y-4 lg:space-y-0 lg:space-x-10',
         'py-8'
       )}
     >
@@ -58,9 +58,11 @@ const IndexPage = () => {
             <Link>See all articles</Link>
           </GatsbyLink>
         </div>
-        {articles.map(data => (
-          <ArticlePreview key={data.slug} {...data} />
-        ))}
+        <div className="space-y-8">
+          {articles.map(data => (
+            <ArticlePreview key={data.slug} {...data} />
+          ))}
+        </div>
       </div>
       <div className="lg:col-span-2">
         <div className="mb-4">
@@ -69,7 +71,7 @@ const IndexPage = () => {
             <Link>See all reviews</Link>
           </GatsbyLink>
         </div>
-        <div className="space-y-1">
+        <div className="space-y-4">
           {reviews.map(data => (
             <ReviewPreview key={data.id} {...data} />
           ))}

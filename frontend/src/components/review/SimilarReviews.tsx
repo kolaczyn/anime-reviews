@@ -18,7 +18,7 @@ type Props = {
 const SimilarReviews: React.FC<Props> = ({ similarReviewOne }) => {
   return (
     <div>
-      <h2>Similar Reviews</h2>
+      <h2 className="mb-4">Similar Reviews</h2>
       <div>
         {[similarReviewOne].map(review => (
           <ReviewPreview key={review.id} {...review} />
