@@ -11,3 +11,8 @@ If you omit `DATABASE_CLIENT` variable, Strapi will use SQLite.
 ```sh
 yarn dev
 ```
+
+## TODO
+
+Files in docker most likely get rekt with the container, fix that.
+Also, store volume in e.g. /home/pawel/vols/strapi-psql-data instead of strapi-psql-data and let Docker manager where the data is for me
