@@ -1,6 +1,9 @@
+import classNames from 'classnames';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import percentageToColor from '../../utils/percentageToColor';
 import Subtitle from '../ui/Subtitle';
+import OverallScore from './OverallScore';
 
 type Props = {
   title: string;
@@ -18,9 +21,9 @@ const Review: React.FC<Props> = ({
 }) => {
   return (
     <section>
-      <header className="flex justify-between">
+      <header className="flex justify-between items-end">
         <h1>{title}</h1>
-        <span>{overallRating}%</span>
+        <OverallScore overallRating={overallRating} />
       </header>
       <Subtitle>{subtitle}</Subtitle>
       <ReactMarkdown>{content}</ReactMarkdown>
