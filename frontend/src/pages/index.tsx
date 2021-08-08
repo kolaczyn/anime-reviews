@@ -23,7 +23,7 @@ const IndexPage = () => {
             subtitle
             content
             snippet
-            created_at
+            published_at
             imageSmall {
               url
             }
