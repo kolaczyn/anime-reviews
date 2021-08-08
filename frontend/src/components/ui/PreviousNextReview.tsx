@@ -7,16 +7,17 @@ import classNames from 'classnames';
 type Props = {
   next: NeighboorNode | null;
   previous: NeighboorNode | null;
+  baseLink: string;
 };
 
 const Helper: React.FC<{
-  slug: string;
+  link: string;
   title: string;
   is: 'previous' | 'next';
-}> = ({ slug: slug, title, is }) => {
+}> = ({ link, title, is }) => {
   return (
     <GatsbyLink
-      to={`/review/${slug}`}
+      to={link}
       className={classNames(
         'flex hover:underline items-center',
         is === 'next' ? 'flex-row-reverse' : ''
@@ -29,25 +30,33 @@ const Helper: React.FC<{
         )}
       />
       <div>
-        <div>Previous Review:</div>
+        <div>{is == 'previous' ? 'Previous' : 'Next'} Review:</div>
         <div className="font-bold">{title}</div>
       </div>
     </GatsbyLink>
   );
 };
 
-const PreviousNextReview: React.FC<Props> = ({ next, previous }) => {
+const PreviousNext: React.FC<Props> = ({ baseLink, next, previous }) => {
   return (
     <div>
       <div className="flex justify-between">
         {previous !== null ? (
-          <Helper slug={previous.slug} title={previous.title} is="previous" />
+          <Helper
+            link={`${baseLink}/${previous.slug}`}
+            title={previous.title}
+            is="previous"
+          />
         ) : (
           // Empty  div so next link is always on the right even if there is no previous link
           <div />
         )}
         {next !== null ? (
-          <Helper slug={next.slug} title={next.title} is="next" />
+          <Helper
+            link={`${baseLink}/${next.slug}`}
+            title={next.title}
+            is="next"
+          />
         ) : (
           <div />
         )}
@@ -55,4 +64,4 @@ const PreviousNextReview: React.FC<Props> = ({ next, previous }) => {
     </div>
   );
 };
-export default PreviousNextReview;
+export default PreviousNext;

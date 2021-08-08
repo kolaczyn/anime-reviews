@@ -63,14 +63,24 @@ const createArticles = async (graphql, reporter, createPage) => {
   const { errors, data } = await graphql(`
     query Review {
       allStrapiArticles {
-        nodes {
-          slug
-          title
-          subtitle
-          published_at
-          content
-          background {
-            url
+        edges {
+          previous {
+            title
+            slug
+          }
+          next {
+            title
+            slug
+          }
+          node {
+            slug
+            title
+            subtitle
+            published_at
+            content
+            background {
+              url
+            }
           }
         }
       }
@@ -80,13 +90,17 @@ const createArticles = async (graphql, reporter, createPage) => {
     reporter.panicOnBuild('ERROR: Loading createArticles query');
   }
 
-  const articles = data.allStrapiArticles.nodes;
+  const articles = data.allStrapiArticles.edges;
 
-  articles.forEach(node => {
+  articles.forEach(({ node, previous, next }) => {
     createPage({
       path: `article/${node.slug}`,
       component: path.resolve('./src/components/article/ArticlePage.tsx'),
-      context: node,
+      context: {
+        ...node,
+        previous,
+        next,
+      },
     });
   });
 };

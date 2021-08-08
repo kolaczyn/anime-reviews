@@ -5,7 +5,7 @@ import backgroundImage from '../../utils/backgroundImage';
 import calculateRating from '../../utils/calculateRating';
 import GlassPage from '../ui/GlassPage';
 import AnimeRatings from './AnimeRatings';
-import PreviousNextReview from './PreviousNextReview';
+import PreviousNext from '../ui/PreviousNextReview';
 import Review from './Review';
 import SimilarReviews from './SimilarReviews';
 
@@ -86,7 +86,7 @@ const ReviewPage: React.FC<Props> = ({ pageContext }) => {
             {similarReviewOne ? (
               <SimilarReviews similarReviewOne={similarReviewOne} />
             ) : null}
-            <PreviousNextReview next={next} previous={previous} />
+            <PreviousNext baseLink="/review" next={next} previous={previous} />
           </div>
         </GlassPage>
       </div>

@@ -1,5 +1,5 @@
-query ReviewsPageQuery {
-  allStrapiReviews {
+query ArticlePageQuery {
+  allStrapiArticles {
     nodes {
       slug
       id

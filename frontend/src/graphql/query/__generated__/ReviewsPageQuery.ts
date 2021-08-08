@@ -20,7 +20,7 @@ export interface ReviewsPageQuery_allStrapiReviews_nodes {
   snippet: string | null;
   subtitle: string | null;
   content: string | null;
-  created_at: any | null;
+  published_at: any | null;
   imageSmall: ReviewsPageQuery_allStrapiReviews_nodes_imageSmall | null;
 }
 

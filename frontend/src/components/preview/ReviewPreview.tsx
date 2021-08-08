@@ -10,7 +10,7 @@ type Props = {
   title: string;
   snippet: string;
   slug: string;
-  created_at: string;
+  published_at: string;
   imageSmall: {
     url: string;
   };
@@ -20,7 +20,7 @@ const ReviewPreview: React.FC<Props> = ({
   title,
   snippet,
   slug,
-  created_at: date,
+  published_at: date,
   imageSmall: { url },
 }) => {
   const asDate = new Date(date);

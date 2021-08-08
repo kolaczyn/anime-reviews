@@ -16,7 +16,7 @@ export default function ReviewPage() {
           id
           title
           snippet
-          created_at
+          published_at
           imageSmall {
             url
           }
