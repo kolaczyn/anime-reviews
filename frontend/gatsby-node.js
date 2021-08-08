@@ -1,34 +1,42 @@
 // // exports.onCreateNode = ({node}) => {
 // //   console.log(`Node created of type ${node.internal.type}`)
 // // }
-const path = require('path')
+const path = require('path');
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
-
+const createReviews = async (graphql, reporter, createPage) => {
   const { errors, data } = await graphql(`
     query Review {
-      allStrapiReviews {
-        nodes {
-          slug
-          title
-          subtitle
-          published_at
-          content
-          story
-          opening
-          characters
-          awesomeness
-          background {
-            url
-          }
-          similarReviewOne {
-            id
-            slug
+      allStrapiReviews(sort: { fields: published_at, order: DESC }) {
+        edges {
+          previous {
             title
-            snippet
-            created_at
-            imageSmall {
+            slug
+          }
+          next {
+            title
+            slug
+          }
+          node {
+            title
+            slug
+            subtitle
+            published_at
+            content
+            story
+            opening
+            characters
+            awesomeness
+            similarReviewOne {
+              id
+              slug
+              title
+              snippet
+              created_at
+              imageSmall {
+                url
+              }
+            }
+            background {
               url
             }
           }
@@ -40,13 +48,52 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('ERROR: Loading createPages query');
   }
 
-  const reviews = data.allStrapiReviews.nodes;
+  const reviews = data.allStrapiReviews.edges;
 
-  reviews.forEach(node => {
+  reviews.forEach(({ previous, next, node }) => {
     createPage({
       path: `review/${node.slug}`,
       component: path.resolve('./src/components/review/ReviewPage.tsx'),
+      context: { ...node, previous, next },
+    });
+  });
+};
+
+const createArticles = async (graphql, reporter, createPage) => {
+  const { errors, data } = await graphql(`
+    query Review {
+      allStrapiArticles {
+        nodes {
+          slug
+          title
+          subtitle
+          published_at
+          content
+          background {
+            url
+          }
+        }
+      }
+    }
+  `);
+  if (errors) {
+    reporter.panicOnBuild('ERROR: Loading createArticles query');
+  }
+
+  const articles = data.allStrapiArticles.nodes;
+
+  articles.forEach(node => {
+    createPage({
+      path: `article/${node.slug}`,
+      component: path.resolve('./src/components/article/ArticlePage.tsx'),
       context: node,
     });
   });
+};
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+
+  await createReviews(graphql, reporter, createPage);
+  await createArticles(graphql, reporter, createPage);
 };

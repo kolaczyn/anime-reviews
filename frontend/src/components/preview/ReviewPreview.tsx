@@ -26,11 +26,11 @@ const ReviewPreview: React.FC<Props> = ({
   const asDate = new Date(date);
   const prettyDate = dateAndTime.format(asDate, 'D MMM YYYY');
   return (
-    <GatsbyLink className="inline-block" to={`/review/${slug}`}>
+    <GatsbyLink className="block" to={`/review/${slug}`}>
       <div className="grid grid-cols-3 rounded-lg overflow-hidden shadow-sm hover:shadow-md border-light-gray border-2">
         <div
           className="bg-center bg-no-repeat bg-cover"
-          style={backgroundImage(url)}
+          style={{ ...backgroundImage(url), aspectRatio: '1/1' }}
         />
         <div className="p-2 col-span-2 overflow-ellipsis">
           <header>

@@ -13,7 +13,10 @@ const GeneralLayout: React.FC<Props> = ({ children }) => {
       <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Anime Reviews</title>
         <meta charSet="utf-8" />
-        <meta name="description" content="Here you'll find anime reviews and weeb blog posts." />
+        <meta
+          name="description"
+          content="Here you'll find anime reviews and weeb blog posts."
+        />
       </Helmet>
       <NavbarContextWrapper>
         <SidebarContextWrapper>
