@@ -10,7 +10,7 @@ import { ReviewsPageQuery } from '../graphql/query/__generated__/ReviewsPageQuer
 export default function ReviewPage() {
   const reviews = useStaticQuery<ReviewsPageQuery>(graphql`
     query ReviewPageQuery {
-      allStrapiReviews {
+      allStrapiReviews(sort: { fields: published_at, order: DESC }) {
         nodes {
           slug
           id

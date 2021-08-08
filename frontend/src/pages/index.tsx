@@ -12,7 +12,10 @@ const IndexPage = () => {
   const { allStrapiArticles, allStrapiReviews } =
     useStaticQuery<HomePageQuery>(graphql`
       query HomePageQuery {
-        allStrapiReviews(limit: 5) {
+        allStrapiReviews(
+          limit: 5
+          sort: { fields: published_at, order: DESC }
+        ) {
           nodes {
             slug
             id
@@ -26,7 +29,10 @@ const IndexPage = () => {
             }
           }
         }
-        allStrapiArticles(limit: 3) {
+        allStrapiArticles(
+          limit: 3
+          sort: { fields: published_at, order: DESC }
+        ) {
           nodes {
             title
             published_at

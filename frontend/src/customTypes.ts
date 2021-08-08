@@ -4,3 +4,8 @@ export type Ratings = {
   characters: number;
   awesomeness: number;
 };
+
+export type NeighboorNode = {
+  title: string;
+  slug: string;
+};

@@ -30,7 +30,7 @@ const ArticlePreview: React.FC<Props> = ({
   const asDate = new Date(date);
   const prettyDate = dateAndTime.format(asDate, 'D MMM YYYY');
   return (
-    <GatsbyLink className="inline-block group" to={`/review/${slug}`}>
+    <GatsbyLink className="inline-block group" to={`/article/${slug}`}>
       <section>
         <div
           className="bg-center bg-no-repeat bg-cover w-full rounded-md overflow-hidden mb-2"

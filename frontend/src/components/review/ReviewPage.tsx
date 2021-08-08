@@ -1,20 +1,18 @@
-import { Link } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import ReactMarkdown from 'react-markdown';
-import calculateRating from '../../utils/calculateRating';
-import Review from './Review';
-import ContainerSmall from '../layout/container/ContainerSmall';
-import Subtitle from '../ui/Subtitle';
-import RatingBar from './RatingBar';
-import AnimeRatings from './AnimeRatings';
-import SimilarReviews from './SimilarReviews';
-import strapiUrl from '../../utils/strapiUrl';
+import { NeighboorNode } from '../../customTypes';
 import backgroundImage from '../../utils/backgroundImage';
+import calculateRating from '../../utils/calculateRating';
 import GlassPage from '../ui/GlassPage';
+import AnimeRatings from './AnimeRatings';
+import PreviousNextReview from './PreviousNextReview';
+import Review from './Review';
+import SimilarReviews from './SimilarReviews';
 
 type Props = {
   pageContext: {
+    next?: NeighboorNode;
+    previous?: NeighboorNode;
     title: string;
     subtitle: string;
     published_at: string;
@@ -39,8 +37,8 @@ type Props = {
   };
 };
 
-const ReviewPage: React.FC<Props> = ({
-  pageContext: {
+const ReviewPage: React.FC<Props> = ({ pageContext }) => {
+  const {
     title,
     subtitle,
     published_at,
@@ -51,8 +49,9 @@ const ReviewPage: React.FC<Props> = ({
     opening,
     characters,
     awesomeness,
-  },
-}) => {
+    next,
+    previous,
+  } = pageContext;
   const overallRating = calculateRating(
     story,
     opening,
@@ -69,7 +68,7 @@ const ReviewPage: React.FC<Props> = ({
         style={{
           ...backgroundImage(background.url),
           paddingTop: '60vh',
-          paddingBottom: '25vh',
+          paddingBottom: '60vh',
         }}
       >
         <GlassPage>
@@ -84,7 +83,10 @@ const ReviewPage: React.FC<Props> = ({
             <AnimeRatings
               ratings={{ story, opening, characters, awesomeness }}
             />
-            <SimilarReviews similarReviewOne={similarReviewOne} />
+            {similarReviewOne ? (
+              <SimilarReviews similarReviewOne={similarReviewOne} />
+            ) : null}
+            <PreviousNextReview next={next} previous={previous} />
           </div>
         </GlassPage>
       </div>

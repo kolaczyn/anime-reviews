@@ -25,8 +25,8 @@ const Review: React.FC<Props> = ({
         <h1>{title}</h1>
         <OverallScore overallRating={overallRating} />
       </header>
-      <Subtitle>{subtitle}</Subtitle>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <Subtitle className="mb-8">{subtitle}</Subtitle>
+      <ReactMarkdown className="markdown-body">{content}</ReactMarkdown>
     </section>
   );
 };
