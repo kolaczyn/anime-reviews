@@ -12,15 +12,15 @@ module.exports = {
     DEV_SSR: false,
   },
   plugins: [
-    {
-      resolve: 'gatsby-source-strapi',
-      options: {
-        apiURL: gatsbyStrapiUrl,
-        queryLimit: 1000,
-        collectionTypes: ['reviews', 'articles'],
-        singleTypes: ['donate-page'],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-strapi',
+    //   options: {
+    //     apiURL: gatsbyStrapiUrl,
+    //     queryLimit: 1000,
+    //     collectionTypes: ['reviews', 'articles'],
+    //     singleTypes: ['donate-page'],
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-google-fonts-v2',
       options: {

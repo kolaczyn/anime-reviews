@@ -18,22 +18,7 @@ export default function DonatePage() {
     setThemeDark();
     return setThemeLight;
   }, []);
-  const donatePageData = useStaticQuery<DonatePageQuery>(graphql`
-    query DonatePage {
-      strapiDonatePage {
-        title
-        content
-        moneroAddress
-        moneroQr {
-          formats {
-            thumbnail {
-              url
-            }
-          }
-        }
-      }
-    }
-  `).strapiDonatePage;
+  const donatePageData: any = {};
 
   const copyAddressToClipboard = () => {
     copy(donatePageData.moneroAddress);
@@ -54,10 +39,7 @@ export default function DonatePage() {
             <button onClick={copyAddressToClipboard}>
               <ButtonStyle type="success">{copyMessage}</ButtonStyle>
             </button>
-            <a
-              href={strapiUrl(donatePageData.moneroQr.formats.thumbnail.url)}
-              target="_blank"
-            >
+            <a href="#" target="_blank">
               <ButtonStyle type="success" outline>
                 QR Code
               </ButtonStyle>

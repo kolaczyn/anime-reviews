@@ -9,45 +9,9 @@ import { HomePageQuery } from '../graphql/query/__generated__/HomePageQuery';
 import Link from '../components/ui/Link';
 
 const IndexPage = () => {
-  const { allStrapiArticles, allStrapiReviews } =
-    useStaticQuery<HomePageQuery>(graphql`
-      query HomePageQuery {
-        allStrapiReviews(
-          limit: 5
-          sort: { fields: published_at, order: DESC }
-        ) {
-          nodes {
-            slug
-            id
-            title
-            subtitle
-            content
-            snippet
-            published_at
-            imageSmall {
-              url
-            }
-          }
-        }
-        allStrapiArticles(
-          limit: 3
-          sort: { fields: published_at, order: DESC }
-        ) {
-          nodes {
-            title
-            published_at
-            id
-            slug
-            snippet
-            imageSmall {
-              url
-            }
-          }
-        }
-      }
-    `);
-  const articles = allStrapiArticles.nodes;
-  const reviews = allStrapiReviews.nodes;
+  const { allStrapiArticles, allStrapiReviews }: any = {};
+  const articles: any[] = [];
+  const reviews: any[] = [];
 
   return (
     <ContainerMedium

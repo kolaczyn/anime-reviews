@@ -11,24 +11,7 @@ import ArticlePreview from '../components/preview/ArticlePreview';
 type Props = {};
 
 const ArticlePage: React.FC<Props> = ({}) => {
-  const articles = useStaticQuery<ArticlePageQuery>(graphql`
-    query ArticlePageQuery {
-      allStrapiArticles {
-        nodes {
-          slug
-          id
-          title
-          snippet
-          subtitle
-          content
-          published_at
-          imageSmall {
-            url
-          }
-        }
-      }
-    }
-  `).allStrapiArticles.nodes;
+  const articles: any[] = [];
 
   return (
     <>

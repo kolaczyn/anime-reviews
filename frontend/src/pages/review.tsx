@@ -1,29 +1,13 @@
-import { Link as GatsbyLink, useStaticQuery, graphql } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import ReactMarkdown from 'react-markdown';
-import ContainerMedium from '../components/layout/container/ContainerMedium';
-import ReviewPreview from '../components/preview/ReviewPreview';
-import Link from '../components/ui/Link';
-import { ReviewsPageQuery } from '../graphql/query/__generated__/ReviewsPageQuery';
+import { Link as GatsbyLink, useStaticQuery, graphql } from "gatsby";
+import React from "react";
+import { Helmet } from "react-helmet";
+import ReactMarkdown from "react-markdown";
+import ContainerMedium from "../components/layout/container/ContainerMedium";
+import ReviewPreview from "../components/preview/ReviewPreview";
+import Link from "../components/ui/Link";
 
 export default function ReviewPage() {
-  const reviews = useStaticQuery<ReviewsPageQuery>(graphql`
-    query ReviewPageQuery {
-      allStrapiReviews(sort: { fields: published_at, order: DESC }) {
-        nodes {
-          slug
-          id
-          title
-          snippet
-          published_at
-          imageSmall {
-            url
-          }
-        }
-      }
-    }
-  `).allStrapiReviews.nodes;
+  const reviews = [];
 
   return (
     <>
