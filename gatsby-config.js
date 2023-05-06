@@ -18,7 +18,6 @@ module.exports = {
     //     apiURL: gatsbyStrapiUrl,
     //     queryLimit: 1000,
     //     collectionTypes: ['reviews', 'articles'],
-    //     singleTypes: ['donate-page'],
     //   },
     // },
     {

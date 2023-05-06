@@ -11,7 +11,6 @@ const sitemapLinks: LinkInfo[] = [
   { label: 'Home Page', href: '/' },
   { label: 'Latest Articles', href: '/article' },
   { label: 'Latest Reviews', href: '/review' },
-  { label: 'Donate', href: '/donate' },
 ];
 
 const projectsLinks: LinkInfo[] = [

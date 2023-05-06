@@ -24,7 +24,11 @@ const iconLinkInfo: IconLinkInfo[] = [
     href: 'https://twitter.com/kolaczyn',
     label: 'Twitter',
   },
-  { Component: GithubIcon, href: 'https://github.com/kolaczyn', label: 'GitHub' },
+  {
+    Component: GithubIcon,
+    href: 'https://github.com/kolaczyn',
+    label: 'GitHub',
+  },
   {
     Component: LinkedInIcon,
     href: 'https://linkedin.com/kolaczyn',
@@ -38,14 +42,13 @@ const ICON_SIZE = 24;
 const FooterIconLinks: React.FC<Props> = ({}) => {
   return (
     <div className="font-bold">
-      <ExternalLink className="flex items-center space-x-2" href="/rss-feed">
+      <ExternalLink
+        className="flex items-center space-x-2 my-2"
+        href="/rss-feed"
+      >
         <RssIcon size={ICON_SIZE} />
         <span>RSS Feed</span>
       </ExternalLink>
-      <InternalLink className="flex items-center space-x-2 my-2" href="/donate">
-        <MoneroIcon size={ICON_SIZE} />
-        <span>Donate</span>
-      </InternalLink>
       <section>
         <span>You can find me here</span>
         <ul className="space-x-2 flex">

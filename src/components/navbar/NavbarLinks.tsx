@@ -15,10 +15,6 @@ const links: { to: string; label: string }[] = [
     to: '/review',
     label: 'Reviews',
   },
-  {
-    to: '/donate',
-    label: 'Donate',
-  },
 ];
 
 const NavbarLinks: React.FC<Props> = ({ ...props }) => {
@@ -26,7 +22,9 @@ const NavbarLinks: React.FC<Props> = ({ ...props }) => {
     <ul {...props}>
       {links.map(({ to, label }) => (
         <li key={label}>
-          <Link activeClassName="underline" to={to}>{label}</Link>
+          <Link activeClassName="underline" to={to}>
+            {label}
+          </Link>
         </li>
       ))}
     </ul>
